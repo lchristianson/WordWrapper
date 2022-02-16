@@ -35,5 +35,29 @@ public class WWTest {
         assert(answer.equals(text));
 
     }
+
+    @Test
+    public void leadingSpaceTest() {
+        String text = " There is a leading space in this sentance. I hope it doesn't make this test fail.";
+        String formatted = " There is a leading space in this sentance. I\nhope it doesn't make this test fail.";
+        int l = 46;
+        String answer = WordWrapper.wrap(text,l);
+        assert(answer.equals(formatted));
+    }
+
+    @Test
+    public void existingNewlinesTest() {
+        String text = "Hello everybody\nThis\nis a test";
+        int l = 15;
+        String answer = WordWrapper.wrap(text, l);
+        assert(answer.equals(text));
+    }
     
+    @Test
+    public void existingNewlinesTest2() {
+        String text = "Here are\nsome more\nnewlines. We\nshouldn't\nsee any extra\nnewlines made\nby the wrap\nfunction.";
+        int l = 14;
+        String answer = WordWrapper.wrap(text, l);
+        assert(answer.equals(text));
+    }
 }
