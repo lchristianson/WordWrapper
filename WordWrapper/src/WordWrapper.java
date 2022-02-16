@@ -22,13 +22,14 @@ public class WordWrapper {
         int prevSpaceIndex = 0;
         int prevNewlineIndex = 0;
 
-        //Cycles throught the char array looking for a space character and updating prevSpaceIndex.
-        //Once i is beyond the length of the maxLineLength, the previous space is replaced with a new line, \n.
+        //Cycles through the char array looking for a space character and updating prevSpaceIndex when one is found.
+        //Once i is beyond the length of the maxLineLength and the distance between i and the previous newline is greater than maxLineLength - 1,
+        //the previous space is replaced with a new line.
         for(int i = 0; i < arr.length; i++) {
             if(arr[i] == ' ') prevSpaceIndex = i;
             if(arr[i] == '\n') prevNewlineIndex = i;
 
-            if(i / maxLineLength >= lineNumber && i - prevNewlineIndex > 14) {
+            if(i / maxLineLength >= lineNumber && i - prevNewlineIndex > maxLineLength - 1) {
                 arr[prevSpaceIndex] = '\n';
                 prevNewlineIndex = prevSpaceIndex;
                 lineNumber++;
