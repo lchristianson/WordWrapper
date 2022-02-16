@@ -22,7 +22,7 @@ public class WordWrapper {
         int prevSpaceIndex = 0;
         int prevNewlineIndex = 0;
 
-        //Cycles through the char array looking for a space character and updating prevSpaceIndex when one is found.
+        //Cycles through the char array looking for a space character or a newline and updating prevSpaceIndex or prevNewlineIndex when either is found.
         //Once i is beyond the length of the maxLineLength and the distance between i and the previous newline is greater than maxLineLength - 1,
         //the previous space is replaced with a new line.
         for(int i = 0; i < arr.length; i++) {
