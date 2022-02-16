@@ -1,8 +1,5 @@
-import static org.junit.Assert.*;
 
 import org.junit.Test;
-
-import java.util.*;
 
 public class WWTest {
 
@@ -28,6 +25,15 @@ public class WWTest {
         int l = 42;
         String answer = WordWrapper.wrap(text, l);
         assert(answer.equals(formatted));
+    }
+
+    @Test
+    public void noNewlineTest() {
+        String text = "Hopefully this test will not produce a newline";
+        int l = 200;
+        String answer = WordWrapper.wrap(text, l);
+        assert(answer.equals(text));
+
     }
     
 }

@@ -1,6 +1,6 @@
 //Author: Lucas Christianson
 
-//This class is responsible for "wordwrapping" a given string input with a certain column width, maxLineLength.
+//This class is responsible for "wordwrapping" a given string input with a certain column width.
 
 
 public class WordWrapper {
@@ -10,6 +10,10 @@ public class WordWrapper {
     }
     
     public static String wrap(String text, int maxLineLength) {
+
+        //Checks if wrapping is needed and returns the original text if it is not.
+        if(text.length() < maxLineLength) return text;
+
         //Converts text from string to array of char's
         char [] arr = text.toCharArray();
 
