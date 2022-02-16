@@ -21,5 +21,13 @@ public class WWTest {
         assert(answer.equals(f));
     }
 
+    @Test
+    public void twoNewlineTest() {
+        String text = "This will be the first text requiring more than one newline to successfully wrap the text.";
+        String formatted = "This will be the first text requiring more\nthan one newline to successfully wrap the\ntext.";
+        int l = 42;
+        String answer = WordWrapper.wrap(text, l);
+        assert(answer.equals(formatted));
+    }
     
 }
