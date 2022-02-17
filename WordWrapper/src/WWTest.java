@@ -5,18 +5,17 @@ public class WWTest {
 
     @Test
     public void testTest() {
-        assert(1 == 1);
+        assert(true);
     }
 
     @Test
     public void simpleOneNewlineTest() {
-        String t = "Hello there";
-        String f = "Hello\nthere";
+        String text = "Hello there";
+        String formatted = "Hello\nthere";
         int l = 7;
         try{
-            String answer = WordWrapper.wrap(t, l);
-            System.out.println(answer);
-            assert(answer.equals(f));
+            String answer = WordWrapper.wrap(text, l);
+            assert(answer.equals(formatted));
         }catch (LineOverflowException e) {
             fail("No Exception should occur.");
         }
@@ -88,13 +87,39 @@ public class WWTest {
 
     @Test
     public void longWordTest() {
+        String text = "aaaaaaaaaaaaa";
+        int l = 4;
         try {
-            String text = "aaaaaaaaaaaaa";
-            int l = 4;
             WordWrapper.wrap(text, l);
             fail("LineOverflowException expected");
         } catch (LineOverflowException e) {
             System.out.println("Test passed.");
+        }
+    }
+
+    @Test
+    public void multipleSpacesTest() {
+        String text = "This line of       text has multiple spaces where a line will be inserted";
+        String formatted = "This line of   \n   text has\nmultiple spaces\nwhere a line\nwill be inserted";
+        int l = 16;
+        try {
+            String answer = WordWrapper.wrap(text, l);
+            assert(answer.equals(formatted));
+        } catch (LineOverflowException e) {
+            fail("No exception should occur.");
+        }
+    }
+
+    @Test
+    public void longerTextTest() {
+        String text = "As the short northern day merged into night, we found ourselves almost broad upon the wintry ocean, whose freezing spray cased us in ice, as in polished armor.";
+        String formatted = "As the short northern day\nmerged into night, we\nfound ourselves almost\nbroad upon the wintry\nocean, whose freezing\nspray cased us in ice, as\nin polished armor.";
+        int l = 25;
+        try {
+            String answer = WordWrapper.wrap(text, l);
+            assert(answer.equals(formatted));
+        } catch (LineOverflowException e) {
+            fail("No exceptions expected.");
         }
     }
 }
