@@ -60,4 +60,13 @@ public class WWTest {
         String answer = WordWrapper.wrap(text, l);
         assert(answer.equals(text));
     }
+
+    @Test
+    public void longWordTest() {
+        Exception thrown = assertThrows(LineOverflowException.class, () -> {
+            String text = "aaaaaaaaaa";
+            int l = 3;
+            String answer = WordWrapper.wrap(text, l);
+        });
+    }
 }
