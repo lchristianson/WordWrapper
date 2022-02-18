@@ -7,16 +7,11 @@ public class WordWrapper {
 
     private static int prevSpaceIndex = -1;  //-1 if no space for current line has been found yet.
     private static int prevNewlineIndex = -1;
-
-    public static void main(String[] args) {
-
-        //Main not in final build, used for test purposes only.
-    }
     
     public static String wrap(String text, int maxLineLength) throws LineOverflowException {
 
         //Checks if wrapping is needed and returns the original text if it is not.
-        if(text.length() <= maxLineLength) return text;
+        if(text == null || text.length() <= maxLineLength) return text;
 
         //Converts text from string to array of char's
         char [] arr = text.toCharArray();

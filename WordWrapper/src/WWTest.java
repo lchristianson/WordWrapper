@@ -1,4 +1,5 @@
 import static org.junit.Assert.fail;
+
 import org.junit.Test;
 
 public class WWTest {
@@ -50,8 +51,8 @@ public class WWTest {
 
     @Test
     public void leadingSpaceTest() {
-        String text = " There is a leading space in this sentance. I hope it doesn't make this test fail.";
-        String formatted = " There is a leading space in this sentance. I\nhope it doesn't make this test fail.";
+        String text = " There is a leading space in this sentence. I hope it doesn't make this test fail.";
+        String formatted = " There is a leading space in this sentence. I\nhope it doesn't make this test fail.";
         int l = 46;
         try{
             String answer = WordWrapper.wrap(text,l);
@@ -146,5 +147,18 @@ public class WWTest {
         } catch (LineOverflowException e) {
             fail("No exception should occur.");
         }
+    }
+
+    @Test
+    public void nullStringTest() {
+        String text = null;
+        int l = 2;
+        try {
+            String answer = WordWrapper.wrap(text, l);
+            assert(answer == null);
+        } catch (Exception e) {
+            fail("No exception should occur.");
+        }
+
     }
 }
