@@ -122,4 +122,17 @@ public class WWTest {
             fail("No exceptions expected.");
         }
     }
+
+    @Test
+    public void multipleSpacesTest2() {
+        String text = "aaa   aaa";
+        String formatted = "aaa  \naaa";
+        int l = 5;
+        try {
+            String answer = WordWrapper.wrap(text, l);
+            assert(answer.equals(formatted));
+        } catch (LineOverflowException e) {
+            fail("No exception should occur.");
+        }
+    }
 }
