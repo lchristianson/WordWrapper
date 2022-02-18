@@ -160,17 +160,4 @@ public class WWTest {
             fail("No exception should occur.");
         }
     }
-
-    @Test
-    public void tabTest() {
-        String text = "\tThis string begins with a tab.";
-        String formatted = "\tThis\nstring begins\nwith a tab.";
-        int l = 16;
-        try {
-            String answer = WordWrapper.wrap(text, l);
-            assert(answer.equals(formatted));
-        } catch (LineOverflowException e) {
-            fail("No exception should occur.");
-        }
-    }
 }
