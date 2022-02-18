@@ -98,9 +98,21 @@ public class WWTest {
     }
 
     @Test
+    public void longWordTest2() {
+        String text = "hi, this should throw an exception.";
+        int l = 8;
+        try {
+            WordWrapper.wrap(text, l);
+            fail("LineOverflowException expected");
+        } catch (LineOverflowException e) {
+            System.out.println("Test passed.");
+        }
+    }
+
+    @Test
     public void multipleSpacesTest() {
         String text = "This line of       text has multiple spaces where a line will be inserted";
-        String formatted = "This line of   \n   text has\nmultiple spaces\nwhere a line\nwill be inserted";
+        String formatted = "This line of    \n  text has\nmultiple spaces\nwhere a line\nwill be inserted";
         int l = 16;
         try {
             String answer = WordWrapper.wrap(text, l);
