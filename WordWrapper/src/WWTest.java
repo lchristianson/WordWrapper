@@ -1,3 +1,8 @@
+//Author: Lucas Christianson
+
+//This is a test class for the WordWrapper class.
+
+
 import static org.junit.Assert.fail;
 
 import org.junit.Test;
@@ -157,6 +162,32 @@ public class WWTest {
             String answer = WordWrapper.wrap(text, l);
             assert(answer == null);
         } catch (Exception e) {
+            fail("No exception should occur.");
+        }
+    }
+
+    @Test
+    public void longTextTest2() {
+        String text = "The stars were thinning out; the glare of the Milky Way was dimming into a pale ghost of the glory he had known—and, when he was ready, would know again. He was back, precisely where he wished to be, in the space that men called real.";
+        String formatted = "The stars were thinning out; the glare of the Milky Way was\ndimming into a pale ghost of the glory he had known—and,\nwhen he was ready, would know again. He was back, precisely\nwhere he wished to be, in the space that men called real.";
+        int l = 59;
+        try {
+            String answer = WordWrapper.wrap(text, l);
+            assert(answer.equals(formatted));
+        } catch (LineOverflowException e) {
+            fail("No exception should occur.");
+        }
+    }
+
+    @Test
+    public void longTextTest3() {
+        String text = "There is no other purpose for this Mission than to carry out a continuation of the Space Program, and to further our general knowledge of the planets. Is that true?";
+        String formatted = "There is no other purpose for this Mission than to carry out a\ncontinuation of the Space Program, and to further our general knowledge\nof the planets. Is that true?";
+        int l = 71;
+        try {
+            String answer = WordWrapper.wrap(text, l);
+            assert(answer.equals(formatted));
+        } catch (LineOverflowException e) {
             fail("No exception should occur.");
         }
     }
